@@ -21,10 +21,11 @@ var obs = [obsPosition[0][0], obsPosition[0][1]];
 var gameLoop = setInterval(function(){
     //collision check (including out of bounds check)
     //document.getElementById("flap").style.color = "red";
-    if((obs[0] <= 12 && obs[0] >= 1 && (bird <= obs[1] || (bird >= obs[1] + 10))) || bird <= 0 || bird >= 30)
+    if((obs[0] <= 12 && obs[0] >= 1 && (bird <= obs[1] || (bird >= obs[1] + 10))) || bird <= 0 || bird >= 30){
     clearInterval(gameLoop),
     alert("Game over. Score: " + score),
     location.reload();
+}
     document.getElementById("flap").style.color = "white",
     document.getElementById("flap").innerHTML = "";
     for(var i = 0; i < rows; i++) {
@@ -50,15 +51,16 @@ var gameLoop = setInterval(function(){
 //console.log(obsPosition[0]);
 
 
-    if (obsPosition[0][0]-- < -10){
+    if (obsPosition[0][0]-- < -9){
         obs = [obsPosition[1][0], obsPosition[1][1]],
         obsPosition[0] = [columns, randomNum()],
         score++;
     }
-    if (obsPosition[1][0]-- < -10){
+    if (obsPosition[1][0]-- < -9){
         obs = [obsPosition[0][0], obsPosition[0][1]],
         obsPosition[1] = [columns, randomNum()],
-        score++;}
+        score++;
+    }
         bird++;
 }, 90);
 
